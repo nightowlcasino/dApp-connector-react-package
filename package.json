@@ -1,0 +1,38 @@
+{
+  "name": "ergo-dapp-connector",
+  "version": "1.0.0",
+  "description": "React package that embeds an Ergo dApp Connector. Current supported wallets are Nautilus Wallet and SafeW.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nightowlcasino/dApp-connector-react-package.git"
+  },
+  "author": "Night Owl Casino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nightowlcasino/dApp-connector-react-package/issues"
+  },
+  "homepage": "https://github.com/nightowlcasino/dApp-connector-react-package#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
+    "babel-loader": "^8.2.5",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "dependencies": {}
+}
