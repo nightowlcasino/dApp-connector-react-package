@@ -20,6 +20,8 @@
   "homepage": "https://github.com/nightowlcasino/dApp-connector-react-package#readme",
   "devDependencies": {
     "@babel/core": "^7.17.10",
+    "@headlessui/react": "^1.6.1",
+    "@heroicons/react": "^1.0.6",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -33,6 +35,5 @@
   "peerDependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
-  },
-  "dependencies": {}
+  }
 }
