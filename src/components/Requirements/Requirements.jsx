@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Menu, Transition } from '@headlessui/react'
 import wallet_pink from "../../assets/wallet_pink.png"
 import nautiusIcon from "../../assets/nautilus.jpg"
+import WalletHover from "../WalletHover/WalletHover";
 import "./Requirements.css"
 
 function classNames(...classes) {
@@ -50,7 +51,7 @@ export const Requirements = ()=>{
 				console.log("Wallet Disconnected!!!");
 			});
 			setDefaultAddress(
-				truncate(localStorage.getItem("walletAddress"), 14, "...")
+				localStorage.getItem("walletAddress")
 			);
 			setWalletConnected(true);
 		}
@@ -81,8 +82,9 @@ export const Requirements = ()=>{
 				console.log(`OWL: ${balance}`);
 			});
 			ergoWallet.get_change_address().then(function (address) {
+				console.log('ADDRESS: ', address)
 				localStorage.setItem("walletAddress", address);
-				setDefaultAddress(truncate(address, 6, "..."));
+				setDefaultAddress(address);
 				localStorage.setItem("walletConnected", "true");
 			});
 		}
@@ -186,14 +188,14 @@ export const Requirements = ()=>{
 					{!walletConnected && <img src={wallet_pink} id="header-wallet-image" />}
 					<div id="wallet-connect">
 						<span>
-							{walletConnected ? <span style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-								<p style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center',fontWeight:'bold'}}>
+							{walletConnected ? <span style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+								{/* <p style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center',fontWeight:'bold'}}>
 									{owlBalance}
 									<span>OWL</span>
-								</p>
-								<span style={{display:'flex', justifyContent:'end', alignItems:'center', gap:'3px'}}>
+								</p> */}
+								<span style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', gap:'5px'}}>
 									<img src={nautiusIcon} style={{height:'20px'}} />
-									<p>{defaultAddress}</p>
+									<p style={{color:'black', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width:'150px'}}>{defaultAddress}</p>
 								</span>
 
 								</span> : "Connect Wallet"}

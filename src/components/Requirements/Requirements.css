@@ -9,8 +9,6 @@ a{
 }
 
 .mainMenuItem{
-    position: absolute;
-    margin-top: 2rem; 
     background-color: #ffffff; 
     transform-origin: center; 
     width: 14rem; 
@@ -66,6 +64,7 @@ a{
     margin: 0 auto;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;  
     justify-content: center; 
