@@ -160,7 +160,7 @@ export const Requirements = ()=>{
 				  leaveFrom="transform opacity-100 scale-100"
 				  leaveTo="transform opacity-0 scale-95"
 				>
-				  <Menu.Items className="mainMenuItem" style={{ marginTop:'3.5rem'}}>
+				  <Menu.Items className="mainMenuItem" style={{ marginTop:'2.5rem', position:'absolute'}}>
 					<div style={{padding:'0.25rem 0 0.25rem', marginBottom:'1px'}}>
 					  <Menu.Item onClick={connectNautilus}>
 						{({ active }) => (
@@ -184,7 +184,7 @@ export const Requirements = ()=>{
 			)}
 			
 			<div id="header-wallet-wrapper" onClick={handleWalletTrue}>
-				<div id="header-wallet">
+				<div id="header-wallet" style={{flexDirection:walletConnected?'column':'row'}}>
 					{!walletConnected && <img src={wallet_pink} id="header-wallet-image" />}
 					<div id="wallet-connect">
 						<span>
