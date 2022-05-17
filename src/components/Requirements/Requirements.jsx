@@ -27,6 +27,14 @@ export const Requirements = () => {
   const [readOnlyNautilus, setReadOnlyNautilus] = useState(false);
   const [defaultAddress, setDefaultAddress] = useState();
 
+  window.addEventListener("ergo_wallet_disconnected", () => {
+    localStorage.removeItem("walletAddress");
+    localStorage.removeItem("walletConnected");
+    setDefaultAddress(false);
+    setWalletConnected(false);
+    console.log("Wallet Disconnected!");
+  });
+
   useEffect(() => {
     const checkWallet = localStorage.getItem("walletConnected");
     if (checkWallet === "true") {
@@ -43,13 +51,6 @@ export const Requirements = () => {
           console.log("Wallet access denied");
         }
       });
-      window.addEventListener("ergo_wallet_disconnected", () => {
-        localStorage.setItem("walletAddress", "");
-        localStorage.setItem("walletConnected", "false");
-        setDefaultAddress(false);
-        setWalletConnected(false);
-        console.log("Wallet Disconnected!!!");
-      });
       setDefaultAddress(localStorage.getItem("walletAddress"));
       setWalletConnected(true);
     }
@@ -57,13 +58,6 @@ export const Requirements = () => {
 
   useEffect(() => {
     if (typeof ergoWallet !== "undefined") {
-      window.addEventListener("ergo_wallet_disconnected", () => {
-        localStorage.setItem("walletAddress", "");
-        localStorage.setItem("walletConnected", "");
-        setDefaultAddress(false);
-        setWalletConnected(false);
-        console.log("Wallet Disconnected!!!");
-      });
       // get ERG balance
       ergoWallet.get_balance().then(function (balance) {
         setErgBalance(balance / NANOERG_TO_ERG);
@@ -108,9 +102,8 @@ export const Requirements = () => {
         setWalletConnected(false);
         setErgoWallet();
         setDefaultAddress("");
-        setOwlBalance(0);
-		localStorage.removeItem("walletAddress");
-		localStorage.removeItem("walletConnected");
+        localStorage.removeItem("walletAddress");
+        localStorage.removeItem("walletConnected");
       }
     }
   };
@@ -127,7 +120,10 @@ export const Requirements = () => {
   };
 
   const connectNautilus = () => {
+    console.log("connectNautilus method");
     if (!window.ergoConnector) {
+      console.log(window.ergoConnector);
+      console.log("ergoConnector not found");
       return;
     }
     window.ergoConnector.nautilus.isConnected().then((connected) => {
