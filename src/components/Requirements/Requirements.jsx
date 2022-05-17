@@ -5,6 +5,7 @@ import wallet_white from "../../assets/wallet-light.png";
 import nautiusIcon from "../../assets/nautilus.jpg";
 import WalletHover from "../WalletHover/WalletHover";
 import "./Requirements.css";
+import ModalPopup from "./ModalPopup/ModalPopup";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -27,6 +28,7 @@ export const Requirements = () => {
   const [walletHover, setWalletHover] = useState(false);
   const [readOnlyNautilus, setReadOnlyNautilus] = useState(false);
   const [defaultAddress, setDefaultAddress] = useState();
+  const [modalOpen, setModalOpen] = useState();
 
   window.addEventListener("ergo_wallet_disconnected", () => {
     localStorage.removeItem("walletAddress");
@@ -271,8 +273,10 @@ export const Requirements = () => {
               owlBalance={owlBalance}
               sigUSDBalance={sigUSDBalance}
               ergBalance={ergBalance}
+              setModalOpen={setModalOpen}
             />
           )}
+          {modalOpen && <ModalPopup modalOpen={modalOpen} setModalOpen={setModalOpen} disconnect={disconnectWallet} />}
         </div>
       </div>
     </div>

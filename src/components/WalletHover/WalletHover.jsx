@@ -1,9 +1,11 @@
 import { Fragment, useState } from "react";
 import { Menu, Transition, Dialog } from "@headlessui/react";
+import { ExclamationIcon } from '@heroicons/react/outline'
 import SigRSVicon from "../../assets/sigrsv-icon.svg";
 import ERGicon from "../../assets/ergo-icon.svg";
 
 import "../Requirements/Requirements.css";
+import ModalPopup from "../Requirements/ModalPopup/ModalPopup";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -14,18 +16,31 @@ export default function WalletHover({
   owlBalance,
   sigUSDBalance,
   ergBalance,
+  setModalOpen
 }) {
   const [open, setOpen] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
 
-  console.log("modal state is: " + modalOpen);
   const triggerModal = () => {
     console.log("I enter triggerModal");
-    setModalOpen(!modalOpen);
+    setModalOpen(true);
   };
+
+  function handleClearWallet(){
+    setModalOpen(true);
+  }
   return (
     <>
-      <Dialog open={modalOpen} onClose={() => setModalOpen(false)}>
+   
+    {/* <Transition.Root show={modalOpen}>
+      <Dialog as='div' onClose={setModalOpen}>
+        <Transition show={modalOpen}
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95">
       <Dialog.Panel>
         <Dialog.Title>Deactivate account</Dialog.Title>
         <Dialog.Description>
@@ -40,7 +55,9 @@ export default function WalletHover({
         <button onClick={() => setModalOpen(false)}>Deactivate</button>
         <button onClick={() => setModalOpen(false)}>Cancel</button>
       </Dialog.Panel>
+      </Transition>
     </Dialog>
+    </Transition.Root> */}
       <Menu as="div" className="mainDiv">
         <Transition
           show={open}
@@ -120,7 +137,7 @@ export default function WalletHover({
                   <a
                     style={{ textAlign: "center" }}
                     href="#"
-                    onClick={disconnect}
+                    onClick={handleClearWallet}
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
                     <p
@@ -139,6 +156,8 @@ export default function WalletHover({
           </Menu.Items>
         </Transition>
       </Menu>
+
+      {/* {modalOpen && <ModalPopup />} */}
     </>
   );
 }
