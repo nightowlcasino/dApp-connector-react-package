@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import wallet_pink from "../../assets/wallet-dark.png";
+import wallet_black from "../../assets/wallet-dark.png";
+import wallet_white from "../../assets/wallet-light.png";
 import nautiusIcon from "../../assets/nautilus.jpg";
 import WalletHover from "../WalletHover/WalletHover";
 import "./Requirements.css";
@@ -81,6 +82,16 @@ export const Requirements = () => {
       });
     }
   }, [ergoWallet]);
+
+  const colorStylingArray = {
+    orange: ["#ff5e18", "black"],
+    white: ["white", "black"],
+    black: ["black", "white"],
+    green: ["#00b300", "white"],
+    purple: ["#8c00ff", "white"],
+    blue: ["#00b3ff", "white"],
+    red: ["#ff0000", "white"],
+  };
 
   const truncate = (str, len, sep) => {
     if (str.length < len) {
@@ -169,7 +180,7 @@ export const Requirements = () => {
           >
             <Menu.Items
               className="mainMenuItem"
-              style={{ marginTop: "2.5rem", position: "absolute" }}
+              style={{ marginTop: "2.8rem", position: "absolute" }}
             >
               <div
                 style={{ padding: "0.25rem 0 0.25rem", marginBottom: "1px" }}
@@ -204,10 +215,14 @@ export const Requirements = () => {
       <div id="header-wallet-wrapper" onClick={handleWalletTrue}>
         <div
           id="header-wallet"
-          style={{ flexDirection: walletConnected ? "column" : "row" }}
+          style={{
+            backgroundColor: colorStylingArray.green[0],
+            color: colorStylingArray.green[1],
+            flexDirection: walletConnected ? "column" : "row",
+          }}
         >
           {!walletConnected && (
-            <img src={wallet_pink} id="header-wallet-image" />
+            <img src={colorStylingArray.green[1] == "white" ? wallet_white : wallet_black} id="header-wallet-image" />
           )}
           <div id="wallet-connect">
             <span>

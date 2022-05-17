@@ -21,8 +21,7 @@ export default function WalletHover({
   console.log("modal state is: " + modalOpen);
   const triggerModal = () => {
     console.log("I enter triggerModal");
-    setModalOpen(true);
-    
+    setModalOpen(!modalOpen);
   };
   return (
     <>
@@ -54,7 +53,7 @@ export default function WalletHover({
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="mainMenuItem">
-            <div style={{ padding: "0.25rem 0 0.25rem", marginBottom: "1px" }}>
+            <div style={{ padding: "2rem 0 0.25rem", marginBottom: "1px" }}>
               {ergBalance != 0 && (
                 <Menu.Item>
                   {({ active }) => (
@@ -121,7 +120,7 @@ export default function WalletHover({
                   <a
                     style={{ textAlign: "center" }}
                     href="#"
-                    onClick={triggerModal}
+                    onClick={disconnect}
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
                     <p
