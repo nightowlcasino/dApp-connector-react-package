@@ -1,8 +1,8 @@
 import { useState, useEffect, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import wallet_black from "../../assets/wallet-dark.png";
-import wallet_white from "../../assets/wallet-light.png";
-import nautiusIcon from "../../assets/nautilus.jpg";
+import wallet_black from "../../assets/ergo-wallet-black.png";
+import wallet_white from "../../assets/ergo-wallet-white.png";
+import nautiusIcon from "../../assets/nautilusLogo.svg";
 import WalletHover from "../WalletHover/WalletHover";
 import "./Requirements.css";
 import ModalPopup from "./ModalPopup/ModalPopup";
@@ -107,7 +107,8 @@ export const Requirements = () => {
     }
   };
 
-  const disconnectWallet = () => {
+  function disconnectWallet() {
+    console.log("hola");
     if (typeof window.ergo_request_read_access === "undefined") {
       console.log("Ergo not found");
     } else {
@@ -182,7 +183,7 @@ export const Requirements = () => {
           >
             <Menu.Items
               className="mainMenuItem"
-              style={{ marginTop: "2.8rem", position: "absolute" }}
+              style={{ marginTop: "2.5rem", position: "absolute" }}
             >
               <div
                 style={{ padding: "0.25rem 0 0.25rem", marginBottom: "1px" }}
@@ -218,13 +219,20 @@ export const Requirements = () => {
         <div
           id="header-wallet"
           style={{
-            backgroundColor: colorStylingArray.green[0],
-            color: colorStylingArray.green[1],
+            backgroundColor: colorStylingArray.orange[0],
+            color: colorStylingArray.orange[1],
             flexDirection: walletConnected ? "column" : "row",
           }}
         >
           {!walletConnected && (
-            <img src={colorStylingArray.green[1] == "white" ? wallet_white : wallet_black} id="header-wallet-image" />
+            <img
+              src={
+                colorStylingArray.orange[1] == "white"
+                  ? wallet_white
+                  : wallet_black
+              }
+              id="header-wallet-image"
+            />
           )}
           <div id="wallet-connect">
             <span>
@@ -236,10 +244,6 @@ export const Requirements = () => {
                     alignItems: "center",
                   }}
                 >
-                  {/* <p style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center',fontWeight:'bold'}}>
-									{owlBalance}
-									<span>OWL</span>
-								</p> */}
                   <span
                     style={{
                       display: "flex",
@@ -276,7 +280,13 @@ export const Requirements = () => {
               setModalOpen={setModalOpen}
             />
           )}
-          {modalOpen && <ModalPopup modalOpen={modalOpen} setModalOpen={setModalOpen} disconnect={disconnectWallet} />}
+          {modalOpen && (
+            <ModalPopup
+              modalOpen={modalOpen}
+              setModalOpen={setModalOpen}
+              disconnect={disconnectWallet}
+            />
+          )}
         </div>
       </div>
     </div>

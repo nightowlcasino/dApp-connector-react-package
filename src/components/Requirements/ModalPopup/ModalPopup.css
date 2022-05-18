@@ -19,6 +19,7 @@
     z-index: 10; 
 }
 
+
 .modal-3{
     display: flex; 
     padding: 1rem; 
@@ -72,13 +73,36 @@
     background-color: #F9FAFB; 
 }
 
+.button-clear-wallet {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0 0 15px;
+    color: #ffffff; 
+    font-weight: bold;
+    background-color: rgba(205, 10, 10, 0.8);
+    transition-duration: 0.3s;
+    border-color: transparent; 
+}
+
+.button-clear-wallet:hover {
+    background-color: white;
+    color: rgba(205, 10, 10, 0.8);
+    border: 0.1px solid rgba(205, 10, 10, 0.8);
+}
+
+.button-clear-wallet:active {
+    background-color: white;
+    box-shadow: 0 5px rgba(205, 10, 10, 0.8);
+    transform: translateY(2px);
+  }
+
 .button-1{
     display: inline-flex; 
     padding-top: 0.5rem;
     padding-bottom: 0.5rem; 
     padding-left: 1rem;
     padding-right: 1rem; 
-    background-color: #DC2626; 
+    background-color: #0d6dfd;
     color: #ffffff; 
     font-size: 1rem;
     line-height: 1.5rem; 
@@ -92,6 +116,12 @@
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
 }
 
+.button-1:hover,.button-2:hover {
+    background-color: white;
+    color: #0d6dfd;
+    border: 0.1px solid #0d6dfd
+}
+
 .button-2{
     display: inline-flex; 
     padding-top: 0.5rem;
@@ -99,8 +129,8 @@
     padding-left: 1rem;
     padding-right: 1rem; 
     margin-top: 0.75rem; 
-    background-color: #ffffff; 
-    color: #374151; 
+    background-color: #0d6dfd;
+    color: white; 
     font-size: 1rem;
     line-height: 1.5rem; 
     font-weight: 500; 
@@ -151,10 +181,11 @@
 
     .modal-9{
         display: flex; 
+        justify-content: center;
         padding-left: 1.5rem;
         padding-right: 1.5rem; 
         display: flex; 
-        flex-direction: row-reverse; 
+        flex-direction: row-reverse;
     }
 
     .button-1{
@@ -170,5 +201,12 @@
         font-size: 0.875rem;
         line-height: 1.25rem; 
         width: auto; 
+    }
+
+    .dont-show-message-container {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        padding-right: 3rem;
     }
 }

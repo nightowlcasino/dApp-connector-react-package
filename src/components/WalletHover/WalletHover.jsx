@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import { Menu, Transition, Dialog } from "@headlessui/react";
-import { ExclamationIcon } from '@heroicons/react/outline'
+import { ExclamationIcon } from "@heroicons/react/outline";
 import SigRSVicon from "../../assets/sigrsv-icon.svg";
 import ERGicon from "../../assets/ergo-icon.svg";
 
@@ -16,148 +16,113 @@ export default function WalletHover({
   owlBalance,
   sigUSDBalance,
   ergBalance,
-  setModalOpen
+  setModalOpen,
 }) {
   const [open, setOpen] = useState(true);
 
-  const triggerModal = () => {
-    console.log("I enter triggerModal");
-    setModalOpen(true);
-  };
-
-  function handleClearWallet(){
-    setModalOpen(true);
+  function handleClearWallet() {
+    let showAgain = localStorage.getItem("showAgain");
+    console.log(showAgain);
+    if (showAgain == "false") disconnect();
+    else setModalOpen(true);
   }
   return (
-    <>
-   
-    {/* <Transition.Root show={modalOpen}>
-      <Dialog as='div' onClose={setModalOpen}>
-        <Transition show={modalOpen}
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95">
-      <Dialog.Panel>
-        <Dialog.Title>Deactivate account</Dialog.Title>
-        <Dialog.Description>
-          This will permanently deactivate your account
-        </Dialog.Description>
-
-        <p>
-          Are you sure you want to deactivate your account? All of your data
-          will be permanently removed. This action cannot be undone.
-        </p>
-
-        <button onClick={() => setModalOpen(false)}>Deactivate</button>
-        <button onClick={() => setModalOpen(false)}>Cancel</button>
-      </Dialog.Panel>
-      </Transition>
-    </Dialog>
-    </Transition.Root> */}
-      <Menu as="div" className="mainDiv">
-        <Transition
-          show={open}
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
+    <Menu as="div" className="mainDiv">
+      <Transition
+        show={open}
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items
+          className="mainMenuItem"
         >
-          <Menu.Items className="mainMenuItem">
-            <div style={{ padding: "2rem 0 0.25rem", marginBottom: "1px" }}>
-              {ergBalance != 0 && (
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "item1" : "item2",
-                        "item3"
-                      )}
-                    >
-                      <img src={ERGicon} className="token-icon-img" />
-                      <p>
-                        ERG Balance:
-                        <br />
-                        {ergBalance} ERG
-                      </p>
-                    </a>
-                  )}
-                </Menu.Item>
-              )}
-              {sigUSDBalance != 0 && (
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "item1" : "item2",
-                        "item3"
-                      )}
-                    >
-                      <img src={SigRSVicon} className="token-icon-img" />
-                      <p>
-                        SigUSD Balance:
-                        <br />
-                        {sigUSDBalance} SigUSD
-                      </p>
-                    </a>
-                  )}
-                </Menu.Item>
-              )}
-              {owlBalance != 0 && (
-                <Menu.Item>
-                  {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? "item1" : "item2",
-                        "item3"
-                      )}
-                    >
-                      <img src={ERGicon} className="token-icon-img" />
-                      <p>
-                        OWL Balance:
-                        <br />
-                        {owlBalance} OWL
-                      </p>
-                    </a>
-                  )}
-                </Menu.Item>
-              )}
-
+          <div
+            style={{
+              padding: "0.25rem 0 0.25rem",
+              marginBottom: "1px",
+              marginTop: "1px",
+            }}
+          >
+            {ergBalance != 0 && (
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    style={{ textAlign: "center" }}
                     href="#"
-                    onClick={handleClearWallet}
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <p
-                      style={{
-                        color: "rgba(205, 10, 10, 0.8)",
-                        margin: "0 auto",
-                        fontSize: "0.95rem",
-                      }}
-                    >
-                      Clear Wallet
+                    <img src={ERGicon} className="token-icon-img" />
+                    <p>
+                      ERG Balance:
+                      <br />
+                      {ergBalance} ERG
                     </p>
                   </a>
                 )}
               </Menu.Item>
-            </div>
-          </Menu.Items>
-        </Transition>
-      </Menu>
+            )}
+            {sigUSDBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img src={SigRSVicon} className="token-icon-img" />
+                    <p>
+                      SigUSD Balance:
+                      <br />
+                      {sigUSDBalance} SigUSD
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
+            {owlBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img src={ERGicon} className="token-icon-img" />
+                    <p>
+                      OWL Balance:
+                      <br />
+                      {owlBalance} OWL
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
 
-      {/* {modalOpen && <ModalPopup />} */}
-    </>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  style={{ textAlign: "center" }}
+                  href="#"
+                  onClick={handleClearWallet}
+                  className={classNames(active ? "item1" : "item2", "item3")}
+                >
+                  <p
+                    style={{
+                      color: "rgba(205, 10, 10, 0.8)",
+                      margin: "0 auto",
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    Clear Wallet
+                  </p>
+                </a>
+              )}
+            </Menu.Item>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   );
 }
