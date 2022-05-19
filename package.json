@@ -1,8 +1,9 @@
 {
-  "name": "ergo-dapp-connector",
+  "name": "dapp-conn-test",
   "version": "1.0.0",
   "description": "React package that is an Ergo dApp Connector. Current supported wallet is Nautilus Wallet.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
