@@ -184,10 +184,10 @@ export const Requirements = ({color}) => {
           >
             <Menu.Items
               className="mainMenuItem"
-              style={{ marginTop: "2.5rem", position: "absolute" }}
+              style={{ marginTop: "48px" }}
             >
               <div
-                style={{ padding: "0.25rem 0 0.25rem", marginBottom: "1px" }}
+                style={{ padding: "4px 0 4px", marginBottom: "1px" }}
               >
                 <Menu.Item onClick={connectNautilus}>
                   {({ active }) => (
@@ -202,8 +202,8 @@ export const Requirements = ({color}) => {
                         src={NautilusLogo}
                         style={{
                           height: "30px",
-                          marginRight: "3rem",
-                          marginLeft: "0.5rem",
+                          marginRight: "48px",
+                          marginLeft: "8px",
                         }}
                       />
                       Nautilus

@@ -60,8 +60,8 @@ export default function ModalPopup({ setModalOpen, modalOpen, disconnect }) {
                       <ExclamationIcon
                         style={{
                           color: "#DC2626",
-                          width: "1.5rem",
-                          height: "1.5rem",
+                          width: "24px",
+                          height: "24px",
                         }}
                         aria-hidden="true"
                       />
@@ -71,25 +71,25 @@ export default function ModalPopup({ setModalOpen, modalOpen, disconnect }) {
                         as="h3"
                         style={{
                           color: "#111827",
-                          fontSize: "1.5rem",
+                          fontSize: "24px",
                           fontWeight: "bold",
-                          lineHeight: "0.5rem",
+                          lineHeight: "8px",
                         }}
                       >
                         Disconnect your current wallet
                       </Dialog.Title>
-                      <div style={{ marginTop: "0.5rem" }}>
+                      <div style={{ marginTop: "8px" }}>
                         <p
                           style={{
                             color: "#6B7280",
-                            fontSize: "1.125rem",
-                            lineHeight: "1.25rem",
+                            fontSize: "17px",
+                            lineHeight: "20px",
                             fontWeight: "600",
                           }}
                         >
                           Follow these steps to disconnect your wallet:
                           <br />
-                          <p style={{ fontSize: "1rem", fontWeight: "500" }}>
+                          <p style={{ fontSize: "16px", fontWeight: "500" }}>
                             1. Click this button below:
                             <br />
                             <button

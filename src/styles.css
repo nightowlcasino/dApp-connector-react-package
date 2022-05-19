@@ -1,6 +1,8 @@
 .mainDiv{
     position: relative; 
     text-align: left;
+    margin-right: 200px;
+    margin-top: 20px;
 }
 
 a{
@@ -10,6 +12,7 @@ a{
     font-family: Helvetica,Arial,sans-serif;
 }
 .mainMenuItem{
+    position: absolute;
     background-color: #ffffff; 
     transform-origin: center; 
     width: 200px;
@@ -33,21 +36,21 @@ a{
 
 .item3{
     display: flex; 
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; 
-    padding-left: 1rem;
-    padding-right: 1rem; 
-    font-size: 0.875rem;
-    line-height: 1.25rem; 
+    padding-top: 8px;
+    padding-bottom: 8px; 
+    padding-left: 16px;
+    padding-right: 16px; 
+    font-size: 13.5px;
+    line-height: 20px; 
     align-items: center; 
     font-weight: bold;
 }
 
 .icon{
-    margin-right: 0.75rem; 
+    margin-right: 12px; 
     color: #9CA3AF; 
-    width: 1.25rem; 
-    height: 1.25rem; 
+    width: 20px; 
+    height: 20px; 
 }
 
 #header-wallet-image{
@@ -82,7 +85,7 @@ a{
 .token-icon-img{
 
     height: 20px;
-    margin-right: 1rem;
+    margin-right: 16px;
 }
 
 .modal-1{
@@ -109,7 +112,7 @@ a{
 
 .modal-3{
     display: flex; 
-    padding: 1rem; 
+    padding: 16px; 
     text-align: center; 
     display: flex; 
     justify-content: center; 
@@ -123,15 +126,15 @@ a{
     background-color: #ffffff; 
     transition-property: all; 
     text-align: left; 
-    border-radius: 0.5rem; 
+    border-radius: 8px; 
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .modal-5{
-    padding-left: 1rem;
-    padding-right: 1rem; 
-    padding-bottom: 1rem; 
-    padding-top: 1.25rem; 
+    padding-left: 16px;
+    padding-right: 16px; 
+    padding-bottom: 16px; 
+    padding-top: 20px; 
     background-color: #ffffff; 
 }
 
@@ -142,21 +145,21 @@ a{
     flex-shrink: 0; 
     justify-content: center; 
     align-items: center; 
-    width: 3rem; 
-    height: 3rem; 
+    width: 48px; 
+    height: 48px; 
     border-radius: 9999px; 
 }
 
 .modal-8{
-    margin-top: 0.75rem; 
+    margin-top: 12px; 
     text-align: center; 
 }
 
 .modal-9{
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem; 
-    padding-left: 1rem;
-    padding-right: 1rem; 
+    padding-top: 12px;
+    padding-bottom: 12px; 
+    padding-left: 16px;
+    padding-right: 16px; 
     background-color: #F9FAFB; 
 }
 
@@ -185,19 +188,19 @@ a{
 
 .button-1{
     display: inline-flex; 
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; 
-    padding-left: 1rem;
-    padding-right: 1rem; 
+    padding-top: 8px;
+    padding-bottom: 8px; 
+    padding-left: 16px;
+    padding-right: 16px; 
     background-color: #0d6dfd;
     color: #ffffff; 
-    font-size: 1rem;
-    line-height: 1.5rem; 
+    font-size: 16px;
+    line-height: 24px; 
     font-weight: 500; 
     display: inline-flex; 
     justify-content: center; 
     width: 100%; 
-    border-radius: 0.375rem; 
+    border-radius: 5.5px; 
     border-width: 1px; 
     border-color: transparent; 
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
@@ -211,20 +214,20 @@ a{
 
 .button-2{
     display: inline-flex; 
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem; 
-    padding-left: 1rem;
-    padding-right: 1rem; 
-    margin-top: 0.75rem; 
+    padding-top: 8px;
+    padding-bottom: 8px; 
+    padding-left: 16px;
+    padding-right: 16px; 
+    margin-top: 20px; 
     background-color: #0d6dfd;
     color: white; 
-    font-size: 1rem;
-    line-height: 1.5rem; 
+    font-size: 16px;
+    line-height: 24px; 
     font-weight: 500; 
     display: inline-flex; 
     justify-content: center; 
     width: 100%; 
-    border-radius: 0.375rem; 
+    border-radius: 6px; 
     border-width: 1px; 
     border-color: #D1D5DB; 
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
@@ -237,15 +240,15 @@ a{
     }
 
     .modal-4{
-        margin-top: 2rem;
-        margin-bottom: 2rem; 
+        margin-top: 32px;
+        margin-bottom: 32px; 
         width: 100%; 
-        max-width: 32rem; 
+        max-width: 32px; 
     }
 
     .modal-5{
-        padding: 1.5rem; 
-        padding-bottom: 1rem; 
+        padding: 24px; 
+        padding-bottom: 16px; 
     }
 
     .modal-6{
@@ -256,37 +259,37 @@ a{
     .modal-7{
         margin-left: 0;
         margin-right: 0; 
-        width: 2.5rem; 
-        height: 2.5rem; 
+        width: 40px; 
+        height: 40px; 
     }
     
     .modal-8{
         margin-top: 0; 
-        margin-left: 1rem; 
+        margin-left: 16px; 
         text-align: left; 
     }
 
     .modal-9{
         display: flex; 
         justify-content: center;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem; 
+        padding-left: 24px;
+        padding-right: 24px; 
         display: flex; 
         flex-direction: row-reverse;
     }
 
     .button-1{
-        margin-left: 0.75rem; 
-        font-size: 0.875rem;
-        line-height: 1.25rem; 
+        margin-left: 12px; 
+        font-size: 13px;
+        line-height: 12px; 
         width: auto; 
     }
 
     .button-2{
         margin-top: 0; 
-        margin-left: 0.75rem; 
-        font-size: 0.875rem;
-        line-height: 1.25rem; 
+        margin-left: 12px; 
+        font-size: 13px;
+        line-height: 13px; 
         width: auto; 
     }
 
@@ -294,6 +297,6 @@ a{
         display: flex;
         justify-content: center; 
         align-items: center; 
-        padding-right: 3rem;
+        padding-right: 48px;
     }
 }
