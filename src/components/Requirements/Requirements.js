@@ -1,11 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
+import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import wallet_black from "../../assets/ergo-wallet-black.png";
 import wallet_white from "../../assets/ergo-wallet-white.png";
-import nautiusIcon from "../../assets/nautilusLogo.svg";
 import WalletHover from "../WalletHover/WalletHover";
-import "./Requirements.css";
-import ModalPopup from "./ModalPopup/ModalPopup";
+import "../../styles.css";
+import ModalPopup from "../ModalPopup/ModalPopup";
+import NautilusLogo from "../../assets/NautilusLogo.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -17,7 +18,7 @@ const TOKENID_NO_TEST =
 const TOKENID_FAKE_SIGUSD =
   "96c402c0e658909aa03f534006124f0e43725c467dbc8dea39680d0861892de5";
 
-export const Requirements = () => {
+export const Requirements = ({color}) => {
   const [open, setOpen] = useState(true);
   const [ergoWallet, setErgoWallet] = useState();
   const [ergBalance, setErgBalance] = useState(0);
@@ -58,7 +59,7 @@ export const Requirements = () => {
       setWalletConnected(true);
     }
   }, []);
-
+  console.log(color);
   useEffect(() => {
     if (typeof ergoWallet !== "undefined") {
       // get ERG balance
@@ -198,7 +199,7 @@ export const Requirements = () => {
                       )}
                     >
                       <img
-                        src={nautiusIcon}
+                        src={NautilusLogo}
                         style={{
                           height: "30px",
                           marginRight: "3rem",
@@ -219,15 +220,16 @@ export const Requirements = () => {
         <div
           id="header-wallet"
           style={{
-            backgroundColor: colorStylingArray.orange[0],
-            color: colorStylingArray.orange[1],
+            backgroundColor: colorStylingArray[color][0],
+            color: colorStylingArray[color][1],
             flexDirection: walletConnected ? "column" : "row",
+            border: true ? "1px solid black" : "",
           }}
         >
           {!walletConnected && (
             <img
               src={
-                colorStylingArray.orange[1] == "white"
+                colorStylingArray[color][1] == "white"
                   ? wallet_white
                   : wallet_black
               }
@@ -252,10 +254,10 @@ export const Requirements = () => {
                       gap: "5px",
                     }}
                   >
-                    <img src={nautiusIcon} style={{ height: "20px" }} />
+                    <img src={NautilusLogo} style={{ height: "20px" }} />
                     <p
                       style={{
-                        color: "black",
+                        color: colorStylingArray[color][1],
                         overflow: "hidden",
                         textOverflow: "ellipsis",
                         whiteSpace: "nowrap",

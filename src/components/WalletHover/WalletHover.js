@@ -1,11 +1,9 @@
 import { Fragment, useState } from "react";
-import { Menu, Transition, Dialog } from "@headlessui/react";
-import { ExclamationIcon } from "@heroicons/react/outline";
-import SigRSVicon from "../../assets/sigrsv-icon.svg";
-import ERGicon from "../../assets/ergo-icon.svg";
-
-import "../Requirements/Requirements.css";
-import ModalPopup from "../Requirements/ModalPopup/ModalPopup";
+import { Menu, Transition } from "@headlessui/react";
+import SigRSVicon from "../../assets/sigrsv-icon.png";
+import ERGicon from "../../assets/ergo-icon.png";
+import "../../styles.css";
+import React from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

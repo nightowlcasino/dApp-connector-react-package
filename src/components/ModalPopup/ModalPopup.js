@@ -1,7 +1,8 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import "./ModalPopup.css";
+import "../../styles.css";
+import React from "react";
 
 export default function ModalPopup({ setModalOpen, modalOpen, disconnect }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -75,7 +76,7 @@ export default function ModalPopup({ setModalOpen, modalOpen, disconnect }) {
                           lineHeight: "0.5rem",
                         }}
                       >
-                        Clear Wallet
+                        Disconnect your current wallet
                       </Dialog.Title>
                       <div style={{ marginTop: "0.5rem" }}>
                         <p

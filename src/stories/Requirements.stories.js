@@ -5,5 +5,5 @@ import {Requirements} from "../components/Requirements";
 const stories = storiesOf("App test", module);
 
 stories.add("App test", () => {
-  return (<Requirements />);
+  return (<Requirements color={"black"}/>);
 });
