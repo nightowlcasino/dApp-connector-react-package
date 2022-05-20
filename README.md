@@ -35,6 +35,7 @@
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
+
 </details>
 
 ## About The Project
@@ -58,36 +59,7 @@ The package contains a component that is an Ergo dApp Connector, which means, th
 
 Examples of how to do this will be showed later on.
 
-##### 2. How it works
-
-The package will be uploaded to npmjs.org which is the largest free npm registry, this way, the developer willing to use it will simply have to download it, import it in his project, and call it.
-Essentially this will be done this way:
-
-1. Install the package with npm
-   ```sh
-   npm install ergo-dapp-connector
-   ```
-2. Import it in the .js file where you are willing to use it
-   ```sh
-   import { dAppConnector } from "ergo-dapp-connector";
-   ```
-3. Call the component anywhere in the code
-   ```sh
-   e.g
-
-   <div className="main-container">
-    Click here to connect your wallet! ---->
-    <div className="dAppConnector-container">
-      <dAppConnector>
-    </div>
-   </div>
-   ```
-
-
-
-<p align="right">(<a href="#top">Back to top</a>)</p>
-
-##### 3. Who it benefits
+##### 2. Who it benefits
 
 New developers coming to the Ergo developing scene and wanting to avoid having to deal with the dApp Connection or not having the knowledge for it.
 
@@ -95,48 +67,42 @@ Even if the developer didnt want to use the package itself, he could access this
 
 Or the could simply want to change the visual look of the dApp connector, he could simply copy paste the files and keep the functionality in the .js files but changing the .css files as the developer wants in order to produce a different styling for his dApp Connector button.
 
+The package will be uploaded to npmjs.org which is the largest free npm registry, this way, the developer willing to use it will simply have to download it, import it in his project, and call it. Check the package listed [here](https://www.npmjs.com/package/ergo-dapp-connector)
 
 ### Built With
 
-As mentioned it is a React Package, therefore React will be needed for it. Created using React version ^18.1.0.
+As mentioned it is a React Package, therefore React will be the JS library used for this package. Created using React version ^18.1.0.
 
 * [React.js](https://reactjs.org/)
 * [Storybook.js](https://storybook.js.org/)
 * [Rollup.js](https://rollupjs.org/guide/en/)
 
-
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
 ## Getting Started
 
-This will be an example guide for how to install import and use the package, but until it is fully done I will not fill this section.
+Here we will explain how to properly use the package.
 
 ### Prerequisites
-
-Same thing as before, this will be finished later on.
-* npm
+Although these are very obvious requisites, and surely installed by any web developer, they are:
+* Node.js
+  ```sh
+  https://nodejs.org/
+  ```
+* npm (Although this is likely installed by installing Node)
   ```sh
   npm install npm@latest -g
   ```
+
 
 ### Installation
 
 How to install, import and use the Ergo dApp Connector!
 
-Template that will be modified later.
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+* Install the package.
+  ```sh
+  npm install ergo-dapp-connector
+  ```
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
@@ -145,7 +111,44 @@ Template that will be modified later.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Here we will add some images of different possible uses of the package.
+* Import the dApp Connector in the .js file where you will be using it
+  ```sh
+  import {ErgoDappConnector} from "ergo-dapp-connector";
+  ```
+* Call the component ErgoDappConnector that you just imported anywhere in your code where you want to display it.
+  ```sh
+  <ErgoDappConnector color="orange"/>
+  ```
+
+With the attribute "color" you can specify the color you want your "Connect Wallet" button to be!
+The current supported colors are:
+
+    orange
+    white
+    black
+    green
+    purple
+    blue
+    red
+    yellow
+    brown
+    pink
+    teal
+    cyan
+    coral
+    emerald
+    inkwell
+    darkred
+    darkgreen
+    darkblue
+    darkpurple
+    darkorange
+<br/>
+<img src="images/usage_example.png" alt="Usage example">
+<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+<img src="images/visual_example.png" alt="Visual example" >
+
+
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 

@@ -7,6 +7,6 @@ const stories = storiesOf("App test", module);
 stories.add("App test", () => {
   return (
 
-  <ErgoDappConnector color={"white"}/>);
+  <ErgoDappConnector color={"orange"}/>);
 
 });
