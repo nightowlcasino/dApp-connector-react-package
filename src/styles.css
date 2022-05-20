@@ -2,7 +2,6 @@
     position: relative; 
     text-align: left;
     margin-right: 200px;
-    margin-top: 20px;
 }
 
 a{
@@ -10,6 +9,7 @@ a{
 }
 .package-container {
     font-family: Helvetica,Arial,sans-serif;
+    z-index: 99;
 }
 .mainMenuItem{
     position: absolute;
@@ -51,6 +51,9 @@ a{
     color: #9CA3AF; 
     width: 20px; 
     height: 20px; 
+}
+#wallet-connect{
+    font-size: 16px;
 }
 
 #header-wallet-image{

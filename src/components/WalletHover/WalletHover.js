@@ -2,6 +2,11 @@ import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import SigRSVicon from "../../assets/sigrsv-icon.png";
 import ERGicon from "../../assets/ergo-icon.png";
+import SigUSDicon from "../../assets/sigUSDicon.svg";
+import paideiaIcon from "../../assets/paideiaIcon.svg";
+import netaIcon from "../../assets/netaIcon.svg";
+import ergopadIcon from "../../assets/ergopadIcon.svg";
+
 import "../../styles.css";
 import React from "react";
 
@@ -11,18 +16,24 @@ function classNames(...classes) {
 
 export default function WalletHover({
   disconnect,
-  owlBalance,
   sigUSDBalance,
   ergBalance,
   setModalOpen,
+  sigRSVBalance,
+  ergopadBalance,
+  netaBalance,
+  paideiaBalance,
 }) {
   const [open, setOpen] = useState(true);
 
   function handleClearWallet() {
     let showAgain = localStorage.getItem("showAgain");
-    console.log(showAgain);
-    if (showAgain == "false") disconnect();
-    else setModalOpen(true);
+    
+    //I will comment this out until NEMO let us know if they implement disconnect functionality
+    // if (showAgain == "false") disconnect();
+    // else setModalOpen(true);
+
+    disconnect();
   }
   return (
     <Menu as="div" className="mainDiv">
@@ -70,7 +81,7 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={SigRSVicon} className="token-icon-img" />
+                    <img src={SigUSDicon} className="token-icon-img" />
                     <p>
                       SigUSD Balance:
                       <br />
@@ -80,24 +91,74 @@ export default function WalletHover({
                 )}
               </Menu.Item>
             )}
-            {owlBalance != 0 && (
+            {sigRSVBalance != 0 && (
               <Menu.Item>
                 {({ active }) => (
                   <a
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={ERGicon} className="token-icon-img" />
+                    <img src={SigRSVicon} className="token-icon-img" />
                     <p>
-                      OWL Balance:
+                      SigRSV Balance:
                       <br />
-                      {owlBalance} OWL
+                      {sigRSVBalance} SigRSV
                     </p>
                   </a>
                 )}
               </Menu.Item>
             )}
-
+            {ergopadBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img src={ergopadIcon} className="token-icon-img" />
+                    <p>
+                      ergopad Balance:
+                      <br />
+                      {ergopadBalance} ergopad
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
+            {netaBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img src={netaIcon} className="token-icon-img" />
+                    <p>
+                      NETA Balance:
+                      <br />
+                      {netaBalance} NETA
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
+            {paideiaBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img src={paideiaIcon} className="token-icon-img" />
+                    <p>
+                      Paideia Balance:
+                      <br />
+                      {paideiaBalance} Paideia
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
             <Menu.Item>
               {({ active }) => (
                 <a
