@@ -27,8 +27,7 @@ export default function WalletHover({
   const [open, setOpen] = useState(true);
 
   function handleClearWallet() {
-    let showAgain = localStorage.getItem("showAgain");
-    
+    // let showAgain = localStorage.getItem("showAgain");
     //I will comment this out until NEMO let us know if they implement disconnect functionality
     // if (showAgain == "false") disconnect();
     // else setModalOpen(true);

@@ -5,7 +5,6 @@ import wallet_black from "../../assets/ergo-wallet-black.png";
 import wallet_white from "../../assets/ergo-wallet-white.png";
 import WalletHover from "../WalletHover/WalletHover";
 import "../../styles.css";
-import ModalPopup from "../ModalPopup/ModalPopup";
 import NautilusLogo from "../../assets/NautilusLogo.png";
 
 function classNames(...classes) {
@@ -42,18 +41,35 @@ export const ErgoDappConnector = ({color}) => {
   const [modalOpen, setModalOpen] = useState();
 
   window.addEventListener("ergo_wallet_disconnected", () => {
-    localStorage.removeItem("walletAddress");
-    localStorage.removeItem("walletConnected");
-    setDefaultAddress(false);
-    setWalletConnected(false);
-
+    disconnectWallet();
   });
 
+  const connectSafew = () => {
+		if(!window.ergoConnector){
+			return;
+		}
+		if (!window.ergoConnector.safew.isConnected()) {
+			// we aren't connected
+			window.ergoConnector.safew.connect().then((access_granted) => {
+				if (access_granted) {
+					setWalletConnected(true);
+					window.ergoConnector.safew.getContext().then((context) => {
+						setErgoWallet(context);
+						console.log(`safew is connected`);
+					});
+				} else {
+					setWalletConnected(false);
+					console.log("Wallet access denied");
+				}
+			});
+		}
+		toggleSelector();
+	};
+  
   useEffect(() => {
     const checkWallet = localStorage.getItem("walletConnected");
     if (checkWallet === "true") {
       window.ergoConnector.nautilus.connect().then((access_granted) => {
-
         if (access_granted) {
           setWalletConnected(true);
           window.ergoConnector.nautilus.getContext().then((context) => {
@@ -62,7 +78,6 @@ export const ErgoDappConnector = ({color}) => {
           });
         } else {
           setWalletConnected(false);
-
         }
       });
       setDefaultAddress(localStorage.getItem("walletAddress"));
@@ -113,6 +128,8 @@ export const ErgoDappConnector = ({color}) => {
       // });
       ergoWallet.get_change_address().then(function (address) {
         localStorage.setItem("walletAddress", address);
+        console.log("setDEfaultAddress1")
+        console.log(address);
         setDefaultAddress(truncate(address, 15, "..."));
         localStorage.setItem("walletConnected", "true");
       });
@@ -164,6 +181,7 @@ export const ErgoDappConnector = ({color}) => {
         setDefaultAddress("");
         localStorage.removeItem("walletAddress");
         localStorage.removeItem("walletConnected");
+        console.log(window.ergoConnector.nautilus.disconnect());
       }
     }
   };
@@ -322,14 +340,6 @@ export const ErgoDappConnector = ({color}) => {
               setModalOpen={setModalOpen}
             />
           )}
-          {/* WILL COMMENT THIS UNTIL WE KNOW IF NEMO IMPLEMENTS THE FUNCTIONALITY OF DISCONNECTING */}
-          {/* {modalOpen && (
-            <ModalPopup
-              modalOpen={modalOpen}
-              setModalOpen={setModalOpen}
-              disconnect={disconnectWallet}
-            />
-          )} */}
         </div>
       </div>
     </div>
