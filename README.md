@@ -43,34 +43,32 @@
 
 ## About The Project
 
-There are many Open-Source dApps on top of Ergo that have already developed their dApp connector, every dApp has done it similarly but not exactly the same way, new developers coming to Ergo will be willing to avoid spending days developing and testing something that has already be done, specially Junior Developers with not wide experience will experience some problems trying to create their dApp Connector, this led us to provide a component that embeds the Ergo dApp Connector in it and potentially help every new developer coming to Ergo by having the dApp Connector in a few clicks.
+Many Open-Source dApps on top of Ergo have already developed their dApp connector. Every dApp has done it similarly but with some minor differences. New developers coming into Ergo will be able to avoid spending days developing and testing something that has already been done, giving them more time to focus on their specific project. 
 
-This idea came out of a user from the Ergo Community suggesting creating more documentation regarding Ergo dApp Connection, apparently he was in trouble because he couldnt understand how to do it by taking a look at some Open-Source code. 
+This component contains the Ergo dApp Connector and can help new developers by adding the dApp Connector in a few clicks.
 
-His suggestion made us believe that creating an Ergo dApp Connector during the ErgoHack would be potentially the most helpful tool created for future devs coming to ergo and wanting to develop whatever crazy innovative ideas they have in mind.
+This idea came from an Ergo Community member suggesting creating more documentation regarding Ergo dApp Connection. He was having trouble with the dApp connector, and looking at the open-Source code was not enough.
 
-When we first started developing the dApp connector for our own casino project, we were able to use ErgoDex and ErgoPad's code as guidance.
+His suggestion made the Night Owl team believe that creating an Ergo dApp Connector during the ErgoHack would potentially be the most helpful tool for future developers coming to build on Ergo.
 
-Now we are creating a package that has the whole dApp connector in it. We're hoping our open-source code helps other projects too!
+We're hoping our open-source code helps other projects too!
 
 Open-source is the way!
 
+
 ##### 1. What is this package/library?
-Ergo dApp Connector library for React came out of necessity of various users while developing websites for their dApps.
+Ergo dApp Connector library for React came out of the necessity of various users while developing websites for their dApps.
 
-The package contains a component that is an Ergo dApp Connector, which means, that by downloading it and calling it in your code you will have handled the whole dApp Connection!
+The package contains a component that is an Ergo dApp Connector, which means that by downloading it and calling it in your code, you will have handled the whole dApp Connection!
 
-Examples of how to do this will be showed later on.
+Examples of how to do this will be demonstrated. 
 
-##### 2. Who it benefits
+##### 2. Who does it benefit? 
 
-New developers coming to the Ergo developing scene and wanting to avoid having to deal with the dApp Connection or not having the knowledge for it.
+It benefits new developers coming to build on Ergo who want to avoid dealing with the dApp Connection. 
 
-Even if the developer didnt want to use the package itself, he could access this package's repository which is public and of course Open Source and understand how it is done line by line and therefore LEARNING, education is important.
+Even if the developer didn’t want to use the package itself, he could access this package's public and open-source repository, understand how it is done line by line, and learn the process. 
 
-Or the could simply want to change the visual look of the dApp connector, he could simply copy paste the files and keep the functionality in the .js files but changing the .css files as the developer wants in order to produce a different styling for his dApp Connector button.
-
-The package will be uploaded to npmjs.org which is the largest free npm registry, this way, the developer willing to use it will simply have to download it, import it in his project, and call it. Check the package listed [here](https://www.npmjs.com/package/ergo-dapp-connector)
 
 ### Built With
 
