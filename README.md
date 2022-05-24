@@ -43,31 +43,20 @@
 
 ## About The Project
 
-Many Open-Source dApps on top of Ergo have already developed their dApp connector. Every dApp has done it similarly but with some minor differences. New developers coming into Ergo will be able to avoid spending days developing and testing something that has already been done, giving them more time to focus on their specific project. 
+  Many Open-Source dApps on top of Ergo have already developed their dApp connector. Every dApp has done it similarly but with some minor differences. New developers coming into Ergo will be able to avoid spending days developing and testing something that has already been done, giving them more time to focus on their specific project. 
+  This component contains the Ergo dApp Connector and can help new developers by adding the dApp Connector in a few clicks.
 
-This component contains the Ergo dApp Connector and can help new developers by adding the dApp Connector in a few clicks.
-
-This idea came from an Ergo Community member suggesting creating more documentation regarding Ergo dApp Connection. He was having trouble with the dApp connector, and looking at the open-Source code was not enough.
-
-His suggestion made the Night Owl team believe that creating an Ergo dApp Connector during the ErgoHack would potentially be the most helpful tool for future developers coming to build on Ergo.
-
-We're hoping our open-source code helps other projects too!
+  This idea came from an Ergo Community member suggesting creating more documentation regarding Ergo dApp Connection. He was having trouble with the dApp connector, and looking at the open-Source code was not enough. His suggestion made the Night Owl team believe that creating an Ergo dApp Connector during the ErgoHack would potentially be the most helpful tool for future developers coming to build on Ergo. We're hoping our open-source code helps other projects too!
 
 Open-source is the way!
 
 
 ##### 1. What is this package/library?
-Ergo dApp Connector library for React came out of the necessity of various users while developing websites for their dApps.
-
-The package contains a component that is an Ergo dApp Connector, which means that by downloading it and calling it in your code, you will have handled the whole dApp Connection!
-
-Examples of how to do this will be demonstrated. 
+  Ergo dApp Connector library for React came out of the necessity of various users while developing websites for their dApps. The package contains a component that is an Ergo dApp Connector, which means that by downloading it and calling it in your code, you will have handled the whole dApp Connection! Examples of how to do this will be demonstrated. 
 
 ##### 2. Who does it benefit? 
 
-It benefits new developers coming to build on Ergo who want to avoid dealing with the dApp Connection. 
-
-Even if the developer didn’t want to use the package itself, he could access this package's public and open-source repository, understand how it is done line by line, and learn the process. 
+  It benefits new developers coming to build on Ergo who want to avoid dealing with the dApp Connection. Even if the developer didn’t want to use the package itself, he could access this package's public and open-source repository, understand how it is done line by line, and learn the process. 
 
 
 ### Built With
