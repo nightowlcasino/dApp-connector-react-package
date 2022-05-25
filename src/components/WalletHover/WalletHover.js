@@ -18,26 +18,19 @@ export default function WalletHover({
   disconnect,
   sigUSDBalance,
   ergBalance,
-  setModalOpen,
   sigRSVBalance,
   ergopadBalance,
   netaBalance,
   paideiaBalance,
 }) {
-  const [open, setOpen] = useState(true);
 
   function handleClearWallet() {
-    // let showAgain = localStorage.getItem("showAgain");
-    //I will comment this out until NEMO let us know if they implement disconnect functionality
-    // if (showAgain == "false") disconnect();
-    // else setModalOpen(true);
-
     disconnect();
   }
   return (
     <Menu as="div" className="mainDiv">
       <Transition
-        show={open}
+        show={true}
         as={Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"

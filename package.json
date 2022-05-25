@@ -1,6 +1,6 @@
 {
   "name": "ergo-dapp-connector",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "React package with a built-in Ergo dApp Connector. Current supported wallet is Nautilus Wallet.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
