@@ -46,9 +46,7 @@
   Many Open-Source dApps on top of Ergo have already developed their dApp connector. Every dApp has done it similarly but with some minor differences. New developers coming into Ergo will be able to avoid spending days developing and testing something that has already been done, giving them more time to focus on their specific project. 
   This component contains the Ergo dApp Connector and can help new developers by adding the dApp Connector in a few clicks.
 
-  No dApp has implemented clearing wallet functionality to this date(30/05/2022), we believe this is a huge step in the Ergo ecosystem that improves user experience. Neither has any project ever implemented SAFEW as a wallet choice to connect to their dApp, we believe SAFEW deserve more love from the community, and since it has some fan base, it will be a very nice addition to the Ergo dApp Connector, we are working alongside with Hailey(Safew creator) at the moment to make this happen, however it is unlikely that it will be finished before ErgoHack is over, but we want to show a quick sneak peak of how testing is going [here](https://twitter.com/NightOwlCasino/status/1531482604368760832)
-
-  The more wallets options, the better.
+  No dApp has implemented clearing wallet functionality to this date(30/05/2022), we believe this is a huge step in the Ergo ecosystem that improves user experience. 
   
   This idea came from an Ergo Community member suggesting creating more documentation regarding Ergo dApp Connection. He was having trouble with the dApp connector, and looking at the open-Source code was not enough. His suggestion made the Night Owl team believe that creating an Ergo dApp Connector during the ErgoHack would potentially be the most helpful tool for future developers coming to build on Ergo. We're hoping our open-source code helps other projects too!
 
@@ -154,8 +152,15 @@ The current supported colors are:
 <img src="images/visual_example.png" alt="Visual example" >
 
 
-
 <p align="right">(<a href="#top">Back to top</a>)</p>
+
+## Extra
+
+No project has ever implemented SAFEW as a wallet choice to connect to their dApp, we believe SAFEW deserve more love from the community, and since it has some fan base we decided to take the package a bit further than what our main goal was and implement Nautilus AND Safew compatibility, it will be a very nice addition to the Ergo dApp Connector and to the whole Ergo ecosystem, we are working alongside with Hailey(Safew creator) at the moment to make this happen, but we want to show a quick sneak peak of how testing is going [here](https://twitter.com/NightOwlCasino/status/1531482604368760832)
+
+The more wallets to choose, the better.
+
+PS: However, as we stated before in the readme, the package is already working and can be used by everyone with Nautilus, the goal for ErgoHack was a success, this is just some extra implementation we wanted to mention for the ErgoHack submission.
 
 <!-- CONTRIBUTING -->
 ## Contributing
