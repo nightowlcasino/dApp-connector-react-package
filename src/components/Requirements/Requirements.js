@@ -339,7 +339,7 @@ export const ErgoDappConnector = ({ color }) => {
                     }}
                   >
                     <img
-                      src={NautilusLogo}
+                      src={localStorage.getItem("walletUsed") == "nautilus" ? NautilusLogo : safewLogo}
                       style={{ height: "20px", marginLeft: "20px" }}
                     />
                     <p
