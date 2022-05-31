@@ -66,7 +66,7 @@ As mentioned it is a React Package, therefore React will be the JS library used 
 * [React.js](https://reactjs.org/)
 * [Storybook.js](https://storybook.js.org/)
 * [Rollup.js](https://rollupjs.org/guide/en/)
-* [Nautilus](https://chrome.google.com/webstore/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai)
+* [Nautilus^0.4.0](https://chrome.google.com/webstore/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai)
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 

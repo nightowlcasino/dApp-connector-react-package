@@ -6,7 +6,7 @@ import wallet_white from "../../assets/ergo-wallet-white.png";
 import WalletHover from "../WalletHover/WalletHover";
 import "../../styles.css";
 import NautilusLogo from "../../assets/NautilusLogo.png";
-
+import safewLogo from "../../assets/SafewIcon.png";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -46,44 +46,39 @@ export const ErgoDappConnector = ({ color }) => {
   useEffect(() => {
     const checkWallet = localStorage.getItem("walletConnected");
     if (checkWallet === "true") {
-      setDefaultAddress();
-      window.ergoConnector.nautilus.connect().then((access_granted) => {
-        if (access_granted) {
-          setWalletConnected(true);
-          window.ergoConnector.nautilus.getContext().then((context) => {
-
-            setErgoWallet(context);
-          });
-        } else {
-          setWalletConnected(false);
-        }
-      });
-      setDefaultAddress(localStorage.getItem("walletAddress"));
-      setWalletConnected(true);
+      const whichWallet = localStorage.getItem("walletUsed");
+      if (whichWallet === "nautilus") {
+        setDefaultAddress();
+        window.ergoConnector.nautilus.connect().then((access_granted) => {
+          if (access_granted) {
+            setWalletConnected(true);
+            window.ergoConnector.nautilus.getContext().then((context) => {
+              setErgoWallet(context);
+            });
+          } else {
+            setWalletConnected(false);
+          }
+        });
+        setDefaultAddress(localStorage.getItem("walletAddress"));
+        setWalletConnected(true);
+      }
+      if (whichWallet === "safew") {
+        setDefaultAddress();
+        window.ergoConnector.safew.connect().then((access_granted) => {
+          if (access_granted) {
+            setWalletConnected(true);
+            window.ergoConnector.safew.getContext().then((context) => {
+              setErgoWallet(context);
+            });
+          } else {
+            setWalletConnected(false);
+          }
+        });
+        setDefaultAddress(localStorage.getItem("walletAddress"));
+        setWalletConnected(true);
+      }
     }
   }, []);
-
-  // const connectSafew = () => {
-  // 	if(!window.ergoConnector){
-  // 		return;
-  // 	}
-  // 	if (!window.ergoConnector.safew.isConnected()) {
-  // 		// we aren't connected
-  // 		window.ergoConnector.safew.connect().then((access_granted) => {
-  // 			if (access_granted) {
-  // 				setWalletConnected(true);
-  // 				window.ergoConnector.safew.getContext().then((context) => {
-  // 					setErgoWallet(context);
-  // 					console.log(`safew is connected`);
-  // 				});
-  // 			} else {
-  // 				setWalletConnected(false);
-  // 				console.log("Wallet access denied");
-  // 			}
-  // 		});
-  // 	}
-  // 	toggleSelector();
-  // };
 
   useEffect(() => {
     if (typeof ergoWallet !== "undefined") {
@@ -169,6 +164,7 @@ export const ErgoDappConnector = ({ color }) => {
         setDefaultAddress("");
         localStorage.removeItem("walletAddress");
         localStorage.removeItem("walletConnected");
+        localStorage.removeItem("walletUsed");
         window.ergoConnector.nautilus.disconnect();
       }
     }
@@ -195,6 +191,8 @@ export const ErgoDappConnector = ({ color }) => {
           if (access_granted) {
             setWalletConnected(true);
             window.ergoConnector.nautilus.getContext().then((context) => {
+              console.log("walletUsed")
+              localStorage.setItem("walletUsed", "nautilus");
               setErgoWallet(context);
             });
           } else {
@@ -208,6 +206,34 @@ export const ErgoDappConnector = ({ color }) => {
         return;
       }
     });
+  };
+
+  const connectSafew = () => {
+    console.log("AMAIIII");
+    if (!window.ergoConnector) {
+      console.log("no ergo connector")
+      return;
+    }
+    console.log("yes ergo connector")
+    if (!window.ergoConnector.safew.isConnected()) {
+      // we aren't connected
+      console.log("no conected")
+      window.ergoConnector.safew.connect().then((access_granted) => {
+        if (access_granted) {
+          setWalletConnected(true);
+          window.ergoConnector.safew.getContext().then((context) => {
+            localStorage.setItem("walletUsed", "safew");
+            setErgoWallet(context);
+            console.log(`safew is connected`);
+          });
+        } else {
+          setWalletConnected(false);
+          console.log("Wallet access denied");
+        }
+      });
+    }
+    console.log("yes, already connected!")
+    toggleSelector();
   };
 
   return (
@@ -244,6 +270,27 @@ export const ErgoDappConnector = ({ color }) => {
                         }}
                       />
                       Nautilus
+                    </a>
+                  )}
+                </Menu.Item>
+                <Menu.Item onClick={connectSafew}>
+                  {({ active }) => (
+                    <a
+                      href="#"
+                      className={classNames(
+                        active ? "item1" : "item2",
+                        "item3"
+                      )}
+                    >
+                      <img
+                        src={safewLogo}
+                        style={{
+                          height: "30px",
+                          marginRight: "48px",
+                          marginLeft: "8px",
+                        }}
+                      />
+                      SAFEW
                     </a>
                   )}
                 </Menu.Item>
