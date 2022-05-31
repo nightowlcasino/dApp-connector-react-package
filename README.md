@@ -46,9 +46,13 @@
   Many Open-Source dApps on top of Ergo have already developed their dApp connector. Every dApp has done it similarly but with some minor differences. New developers coming into Ergo will be able to avoid spending days developing and testing something that has already been done, giving them more time to focus on their specific project. 
   This component contains the Ergo dApp Connector and can help new developers by adding the dApp Connector in a few clicks.
 
+  No dApp has implemented clearing wallet functionality to this date(30/05/2022), we believe this is a huge step in the Ergo ecosystem that improves user experience. Neither has any project ever implemented SAFEW as a wallet choice to connect to their dApp, we believe SAFEW deserve more love from the community, and since it has some fan base, it will be a very nice addition to the Ergo dApp Connector, we are working alongside with Hailey(Safew creator) at the moment to make this happen, however it is unlikely that it will be finished before ErgoHack is over, but we want to show a quick sneak peak of how testing is going [here]()
+
+  The more wallets options, the better.
+  
   This idea came from an Ergo Community member suggesting creating more documentation regarding Ergo dApp Connection. He was having trouble with the dApp connector, and looking at the open-Source code was not enough. His suggestion made the Night Owl team believe that creating an Ergo dApp Connector during the ErgoHack would potentially be the most helpful tool for future developers coming to build on Ergo. We're hoping our open-source code helps other projects too!
 
-Open-source is the way!
+  Open-source is the way!
 
 
 ##### 1. What is this package/library?
@@ -58,7 +62,6 @@ Open-source is the way!
 
   It benefits new developers coming to build on Ergo who want to avoid dealing with the dApp Connection. Even if the developer didn’t want to use the package itself, he could access this package's public and open-source repository, understand how it is done line by line, and learn the process. 
 
-
 ### Built With
 
 As mentioned it is a React Package, therefore React will be the JS library used for this package. Created using React version ^18.1.0.
@@ -67,6 +70,7 @@ As mentioned it is a React Package, therefore React will be the JS library used 
 * [Storybook.js](https://storybook.js.org/)
 * [Rollup.js](https://rollupjs.org/guide/en/)
 * [Nautilus](https://chrome.google.com/webstore/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai)
+* [Currently implementing SAFEW]()
 
 <p align="right">(<a href="#top">Back to top</a>)</p>
 
@@ -88,6 +92,10 @@ Although these are very obvious requisites, and surely installed by any web deve
   ```sh
   https://chrome.google.com/webstore/detail/nautilus-wallet/gjlmehlldlphhljhpnlddaodbjjcchai
   ```
+* SAFEW^0.6.3 (Still in development check safewImplementation branch.)
+  ```sh
+  https://chrome.google.com/webstore/detail/simple-and-fast-ergo-wall/fmpbldieijjehhalgjblbpgjmijencll/
+  ```
 
 
 ### Installation
@@ -105,6 +113,8 @@ How to install, import and use the Ergo dApp Connector in your code!
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+[Quick video doing this steps](https://twitter.com/NightOwlCasino/status/1529452399475179520)
 
 * Import the dApp Connector in the .js file where you will be using it
   ```sh
