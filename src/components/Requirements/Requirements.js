@@ -1,38 +1,33 @@
-import { useState, useEffect, Fragment } from "react";
-import React from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import wallet_black from "../../assets/ergo-wallet-black.png";
-import wallet_white from "../../assets/ergo-wallet-white.png";
 import WalletHover from "../WalletHover/WalletHover";
 import "../../styles.css";
-import NautilusLogo from "../../assets/NautilusLogo.png";
+import { wallet_black, wallet_white, nautilus_logo } from "../../assets";
+import { Config } from "../../config";
+import { classNames, getDefaultBalanceState } from "../../helpers/Helpers";
+const { supportedTokens } = Config;
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-const NANOERG_TO_ERG = 1000000000;
-const TOKENID_SIGRSV =
-  "003bd19d0187117f130b62e1bcab0939929ff5c7709f843c5c4dd158949285d0";
-const TOKENID_SIGUSD =
-  "03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04";
-const TOKENID_NETA =
-  "472c3d4ecaa08fb7392ff041ee2e6af75f4a558810a74b28600549d5392810e8";
-const TOKENID_ERGOPAD =
-  "d71693c49a84fbbecd4908c94813b46514b18b67a99952dc1e6e4791556de413";
-const TOKENID_PAIDEIA =
-  "1fd6e032e8476c4aa54c18c1a308dce83940e8f4a28f576440513ed7326ad489";
+const zeroBalanceState = getDefaultBalanceState({
+  tokens: supportedTokens,
+});
 
 export const ErgoDappConnector = ({ color }) => {
   const [open, setOpen] = useState(true);
   const [ergoWallet, setErgoWallet] = useState();
+  const [balances, setBalances] = useState(zeroBalanceState);
 
-  const [ergBalance, setErgBalance] = useState(0);
-  const [sigUSDBalance, setSigUSDBalance] = useState(0);
-  const [sigRSVBalance, setSigRSVBalance] = useState(0);
-  const [ergopadBalance, setErgopadBalance] = useState(0);
-  const [netaBalance, setNetaBalance] = useState(0);
-  const [paideiaBalance, setPaideiaBalance] = useState(0);
+  const setBalance = ({ token, balance }) => {
+    setBalances(
+      [...balances].map((object) => {
+        if (object.name.toLowerCase() === token) {
+          return {
+            balance,
+            ...object,
+          };
+        } else return object;
+      })
+    );
+  };
 
   const [walletConnected, setWalletConnected] = useState(false);
   const [showSelector, setShowSelector] = useState(false);
@@ -51,7 +46,6 @@ export const ErgoDappConnector = ({ color }) => {
         if (access_granted) {
           setWalletConnected(true);
           window.ergoConnector.nautilus.getContext().then((context) => {
-
             setErgoWallet(context);
           });
         } else {
@@ -63,58 +57,30 @@ export const ErgoDappConnector = ({ color }) => {
     }
   }, []);
 
-  // const connectSafew = () => {
-  // 	if(!window.ergoConnector){
-  // 		return;
-  // 	}
-  // 	if (!window.ergoConnector.safew.isConnected()) {
-  // 		// we aren't connected
-  // 		window.ergoConnector.safew.connect().then((access_granted) => {
-  // 			if (access_granted) {
-  // 				setWalletConnected(true);
-  // 				window.ergoConnector.safew.getContext().then((context) => {
-  // 					setErgoWallet(context);
-  // 					console.log(`safew is connected`);
-  // 				});
-  // 			} else {
-  // 				setWalletConnected(false);
-  // 				console.log("Wallet access denied");
-  // 			}
-  // 		});
-  // 	}
-  // 	toggleSelector();
-  // };
-
   useEffect(() => {
-    if (typeof ergoWallet !== "undefined") {
-      // get ERG balance
-      ergoWallet.get_balance().then(function (balance) {
-        setErgBalance(balance / NANOERG_TO_ERG);
-      });
-      // get SigUSD balance
-      ergoWallet.get_balance(TOKENID_SIGUSD).then(function (balance) {
-        setSigUSDBalance(balance / 100);
-      });
-
-      // get SigRSV balance
-      ergoWallet.get_balance(TOKENID_SIGRSV).then(function (balance) {
-        setSigRSVBalance(balance);
-      });
-
-      // get Ergopad balance
-      ergoWallet.get_balance(TOKENID_ERGOPAD).then(function (balance) {
-        setErgopadBalance(balance / 100);
-      });
-
-      // get Neta balance
-      ergoWallet.get_balance(TOKENID_NETA).then(function (balance) {
-        setNetaBalance(balance / 1000000);
-      });
-
-      // get Paideia balance
-      ergoWallet.get_balance(TOKENID_PAIDEIA).then(function (balance) {
-        setPaideiaBalance(balance / 10000);
-      });
+    if (typeof ergoWallet !== "undefined" && supportedTokens) {
+      for (let i = 0; i <= supportedTokens.length; i++) {
+        if (!supportedTokens[i]) return;
+        // get ERG balance
+        if (supportedTokens[i]?.name?.toLowerCase() === "erg") {
+          //TODO: this can probably go away if this function returns erg balance for an empty string
+          ergoWallet.get_balance().then(function (chainBalance) {
+            setBalance({
+              token: "erg",
+              balance: chainBalance / supportedTokens[i].unit,
+            });
+          });
+        } else {
+          ergoWallet
+            .get_balance(supportedTokens[i].id)
+            .then(function (chainBalance) {
+              setBalance({
+                token: supportedTokens[i].name,
+                balance: chainBalance / supportedTokens[i].unit,
+              });
+            });
+        }
+      }
 
       //get Address
       ergoWallet.get_change_address().then(function (address) {
@@ -236,7 +202,7 @@ export const ErgoDappConnector = ({ color }) => {
                       )}
                     >
                       <img
-                        src={NautilusLogo}
+                        src={nautilus_logo}
                         style={{
                           height: "30px",
                           marginRight: "48px",
@@ -292,7 +258,7 @@ export const ErgoDappConnector = ({ color }) => {
                     }}
                   >
                     <img
-                      src={NautilusLogo}
+                      src={nautilus_logo}
                       style={{ height: "20px", marginLeft: "20px" }}
                     />
                     <p
@@ -315,18 +281,32 @@ export const ErgoDappConnector = ({ color }) => {
             </span>
           </div>
           {walletHover && walletConnected && (
-            <WalletHover
-              disconnect={disconnectWallet}
-              sigUSDBalance={sigUSDBalance}
-              ergBalance={ergBalance}
-              sigRSVBalance={sigRSVBalance}
-              netaBalance={netaBalance}
-              ergopadBalance={ergopadBalance}
-              paideiaBalance={paideiaBalance}
-            />
+            <WalletHover disconnect={disconnectWallet} balances={balances} />
           )}
         </div>
       </div>
     </div>
   );
 };
+
+// const connectSafew = () => {
+// 	if(!window.ergoConnector){
+// 		return;
+// 	}
+// 	if (!window.ergoConnector.safew.isConnected()) {
+// 		// we aren't connected
+// 		window.ergoConnector.safew.connect().then((access_granted) => {
+// 			if (access_granted) {
+// 				setWalletConnected(true);
+// 				window.ergoConnector.safew.getContext().then((context) => {
+// 					setErgoWallet(context);
+// 					console.log(`safew is connected`);
+// 				});
+// 			} else {
+// 				setWalletConnected(false);
+// 				console.log("Wallet access denied");
+// 			}
+// 		});
+// 	}
+// 	toggleSelector();
+// };

@@ -1,32 +1,22 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import SigRSVicon from "../../assets/sigrsv-icon.png";
-import ERGicon from "../../assets/ergo-icon.png";
-import SigUSDicon from "../../assets/sigUSDicon.svg";
-import paideiaIcon from "../../assets/paideiaIcon.svg";
-import netaIcon from "../../assets/netaIcon.svg";
-import ergopadIcon from "../../assets/ergopadIcon.svg";
-
+import {
+  sig_rsv_icon,
+  erg_icon,
+  sig_usd_icon,
+  paideia_icon,
+  neta_icon,
+  ergopad_icon,
+  exle_icon,
+} from "../../assets";
+import { classNames } from "../../helpers/Helpers";
 import "../../styles.css";
-import React from "react";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function WalletHover({
-  disconnect,
-  sigUSDBalance,
-  ergBalance,
-  sigRSVBalance,
-  ergopadBalance,
-  netaBalance,
-  paideiaBalance,
-}) {
-
+export default function WalletHover({ disconnect, balances }) {
   function handleClearWallet() {
     disconnect();
   }
+  console.log(balances);
   return (
     <Menu as="div" className="mainDiv">
       <Transition
@@ -39,9 +29,7 @@ export default function WalletHover({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items
-          className="mainMenuItem"
-        >
+        <Menu.Items className="mainMenuItem">
           <div
             style={{
               padding: "0.25rem 0 0.25rem",
@@ -49,108 +37,35 @@ export default function WalletHover({
               marginTop: "1px",
             }}
           >
-            {ergBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={ERGicon} className="token-icon-img" />
-                    <p>
-                      ERG Balance:
-                      <br />
-                      {ergBalance} ERG
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
-            {sigUSDBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={SigUSDicon} className="token-icon-img" />
-                    <p>
-                      SigUSD Balance:
-                      <br />
-                      {sigUSDBalance} SigUSD
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
-            {sigRSVBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={SigRSVicon} className="token-icon-img" />
-                    <p>
-                      SigRSV Balance:
-                      <br />
-                      {sigRSVBalance} SigRSV
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
-            {ergopadBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={ergopadIcon} className="token-icon-img" />
-                    <p>
-                      ergopad Balance:
-                      <br />
-                      {ergopadBalance} ergopad
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
-            {netaBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={netaIcon} className="token-icon-img" />
-                    <p>
-                      NETA Balance:
-                      <br />
-                      {netaBalance} NETA
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
-            {paideiaBalance != 0 && (
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
-                    className={classNames(active ? "item1" : "item2", "item3")}
-                  >
-                    <img src={paideiaIcon} className="token-icon-img" />
-                    <p>
-                      Paideia Balance:
-                      <br />
-                      {paideiaBalance} Paideia
-                    </p>
-                  </a>
-                )}
-              </Menu.Item>
-            )}
+            {balances &&
+              balances.map((token) => {
+                return (
+                  <div>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <a
+                          href="#"
+                          className={classNames(
+                            active ? "item1" : "item2",
+                            "item3"
+                          )}
+                        >
+                          <img
+                            src={token.icon}
+                            className="token-icon-img"
+                            alt={`${token.name} Icon`}
+                          />
+                          <p>
+                            {`${token.name} Balance:`}
+                            <br />
+                            {`${token.balance} ${token.name.toLowerCase()}`}
+                          </p>
+                        </a>
+                      )}
+                    </Menu.Item>
+                  </div>
+                );
+              })}
             <Menu.Item>
               {({ active }) => (
                 <a
