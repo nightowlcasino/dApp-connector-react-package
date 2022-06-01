@@ -1,0 +1,1 @@
+export const NANOERG_TO_ERG = 1000000000;

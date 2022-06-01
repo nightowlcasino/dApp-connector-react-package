@@ -1,29 +1,28 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import SigRSVicon from "../../assets/sigrsv-icon.png";
-import ERGicon from "../../assets/ergo-icon.png";
-import SigUSDicon from "../../assets/sigUSDicon.svg";
-import paideiaIcon from "../../assets/paideiaIcon.svg";
-import netaIcon from "../../assets/netaIcon.svg";
-import ergopadIcon from "../../assets/ergopadIcon.svg";
-
+import {
+  sig_rsv_icon,
+  erg_icon,
+  sig_usd_icon,
+  paideia_icon,
+  neta_icon,
+  ergopad_icon,
+  exle_icon,
+} from "../../assets";
+import { classNames } from "../../helpers/Helpers";
 import "../../styles.css";
-import React from "react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function WalletHover({
   disconnect,
+  balances,
   sigUSDBalance,
   ergBalance,
   sigRSVBalance,
   ergopadBalance,
   netaBalance,
   paideiaBalance,
+  exleBalance,
 }) {
-
   function handleClearWallet() {
     disconnect();
   }
@@ -39,9 +38,7 @@ export default function WalletHover({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items
-          className="mainMenuItem"
-        >
+        <Menu.Items className="mainMenuItem">
           <div
             style={{
               padding: "0.25rem 0 0.25rem",
@@ -56,7 +53,11 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={ERGicon} className="token-icon-img" />
+                    <img
+                      src={erg_icon}
+                      className="token-icon-img"
+                      alt="Ergo Icon"
+                    />
                     <p>
                       ERG Balance:
                       <br />
@@ -73,7 +74,11 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={SigUSDicon} className="token-icon-img" />
+                    <img
+                      src={sig_usd_icon}
+                      className="token-icon-img"
+                      alt="SigUSD Icon"
+                    />
                     <p>
                       SigUSD Balance:
                       <br />
@@ -90,11 +95,36 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={SigRSVicon} className="token-icon-img" />
+                    <img
+                      src={sig_rsv_icon}
+                      className="token-icon-img"
+                      alt="SigRSV Icon"
+                    />
                     <p>
                       SigRSV Balance:
                       <br />
                       {sigRSVBalance} SigRSV
+                    </p>
+                  </a>
+                )}
+              </Menu.Item>
+            )}
+            {exleBalance != 0 && (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(active ? "item1" : "item2", "item3")}
+                  >
+                    <img
+                      src={exle_icon}
+                      className="token-icon-img"
+                      alt="EXLE Icon"
+                    />
+                    <p>
+                      EXLE Balance:
+                      <br />
+                      {exleBalance} EXLE
                     </p>
                   </a>
                 )}
@@ -107,7 +137,11 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={ergopadIcon} className="token-icon-img" />
+                    <img
+                      src={ergopad_icon}
+                      className="token-icon-img"
+                      alt="ErgoPad Icon"
+                    />
                     <p>
                       ergopad Balance:
                       <br />
@@ -124,7 +158,11 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={netaIcon} className="token-icon-img" />
+                    <img
+                      src={neta_icon}
+                      className="token-icon-img"
+                      alt="Neta Icon"
+                    />
                     <p>
                       NETA Balance:
                       <br />
@@ -141,7 +179,11 @@ export default function WalletHover({
                     href="#"
                     className={classNames(active ? "item1" : "item2", "item3")}
                   >
-                    <img src={paideiaIcon} className="token-icon-img" />
+                    <img
+                      src={paideia_icon}
+                      className="token-icon-img"
+                      alt="Paideia Icon"
+                    />
                     <p>
                       Paideia Balance:
                       <br />
