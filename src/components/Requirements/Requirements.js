@@ -5,19 +5,17 @@ import "../../styles.css";
 import { wallet_black, wallet_white, nautilus_logo } from "../../assets";
 import { Config } from "../../config";
 import { classNames, getDefaultBalanceState } from "../../helpers/Helpers";
+const { supportedTokens } = Config;
 
 const zeroBalanceState = getDefaultBalanceState({
-  tokens: Config.supportedTokens,
+  tokens: supportedTokens,
 });
 
 export const ErgoDappConnector = ({ color }) => {
   const [open, setOpen] = useState(true);
   const [ergoWallet, setErgoWallet] = useState();
-
-  console.log("zeroBalanceState", zeroBalanceState);
   const [balances, setBalances] = useState(zeroBalanceState);
 
-  console.log("Config.supportedTokens", Config.supportedTokens);
   const setBalance = ({ token, balance }) => {
     setBalances(
       [...balances].map((object) => {
@@ -60,7 +58,6 @@ export const ErgoDappConnector = ({ color }) => {
   }, []);
 
   useEffect(() => {
-    const { supportedTokens } = Config;
     if (typeof ergoWallet !== "undefined" && supportedTokens) {
       for (let i = 0; i <= supportedTokens.length; i++) {
         if (!supportedTokens[i]) return;
