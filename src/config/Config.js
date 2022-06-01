@@ -1,4 +1,4 @@
-import * as supportedTokens from "../../supported-tokens";
+import { supportedTokens } from "../../supported-tokens";
 
 export const Config = {
   supportedTokens,

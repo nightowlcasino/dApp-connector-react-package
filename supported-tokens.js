@@ -6,7 +6,7 @@ import exle_icon from "./src/assets/exle-icon.svg";
 import ergopad_icon from "./src/assets/ergopad-icon.svg";
 import paideia_icon from "./src/assets/paideia-icon.svg";
 
-export default [
+const supportedTokens = [
   {
     name: "Erg",
     unit: 1000000000,
@@ -49,3 +49,5 @@ export default [
     icon: paideia_icon,
   },
 ];
+
+export { supportedTokens };

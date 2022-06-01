@@ -5,16 +5,19 @@ import "../../styles.css";
 import { wallet_black, wallet_white, nautilus_logo } from "../../assets";
 import { Config } from "../../config";
 import { classNames, getDefaultBalanceState } from "../../helpers/Helpers";
-import supportedTokens from "../../../supported-tokens";
+
+const zeroBalanceState = getDefaultBalanceState({
+  tokens: Config.supportedTokens,
+});
 
 export const ErgoDappConnector = ({ color }) => {
   const [open, setOpen] = useState(true);
   const [ergoWallet, setErgoWallet] = useState();
 
-  const [balances, setBalances] = useState(
-    getDefaultBalanceState(Config.supportedTokens)
-  );
+  console.log("zeroBalanceState", zeroBalanceState);
+  const [balances, setBalances] = useState(zeroBalanceState);
 
+  console.log("Config.supportedTokens", Config.supportedTokens);
   const setBalance = ({ token, balance }) => {
     setBalances(
       [...balances].map((object) => {
@@ -57,10 +60,12 @@ export const ErgoDappConnector = ({ color }) => {
   }, []);
 
   useEffect(() => {
-    if (typeof ergoWallet !== "undefined") {
-      for (let i = 0; i <= Config.supportedTokens.length; i++) {
+    const { supportedTokens } = Config;
+    if (typeof ergoWallet !== "undefined" && supportedTokens) {
+      for (let i = 0; i <= supportedTokens.length; i++) {
+        if (!supportedTokens[i]) return;
         // get ERG balance
-        if (supportedTokens[i].name.toLowerCase() === "erg") {
+        if (supportedTokens[i]?.name?.toLowerCase() === "erg") {
           //TODO: this can probably go away if this function returns erg balance for an empty string
           ergoWallet.get_balance().then(function (chainBalance) {
             setBalance({
