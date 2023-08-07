@@ -325,6 +325,7 @@ export const ErgoDappConnector = ({ color }) => {
               disconnect={disconnectWallet}
               sigUSDBalance={sigUSDBalance}
               ergBalance={ergBalance}
+              terahertzBalance={terahertzBalance} 
               sigRSVBalance={sigRSVBalance}
               netaBalance={netaBalance}
               ergopadBalance={ergopadBalance}
