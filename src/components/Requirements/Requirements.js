@@ -22,6 +22,8 @@ const TOKENID_ERGOPAD =
   "d71693c49a84fbbecd4908c94813b46514b18b67a99952dc1e6e4791556de413";
 const TOKENID_PAIDEIA =
   "1fd6e032e8476c4aa54c18c1a308dce83940e8f4a28f576440513ed7326ad489";
+const TOKENID_TERAHERTZ = 
+  "02f31739e2e4937bb9afb552943753d1e3e9cdd1a5e5661949cb0cef93f907ea";
 
 export const ErgoDappConnector = ({ color }) => {
   const [open, setOpen] = useState(true);
@@ -33,7 +35,7 @@ export const ErgoDappConnector = ({ color }) => {
   const [ergopadBalance, setErgopadBalance] = useState(0);
   const [netaBalance, setNetaBalance] = useState(0);
   const [paideiaBalance, setPaideiaBalance] = useState(0);
-
+  const [terahertzBalance, setTerahertzBalance] = useState(0);
   const [walletConnected, setWalletConnected] = useState(false);
   const [showSelector, setShowSelector] = useState(false);
   const [walletHover, setWalletHover] = useState(false);
@@ -101,6 +103,10 @@ export const ErgoDappConnector = ({ color }) => {
         setSigRSVBalance(balance);
       });
 
+      // get Terahertz balance
+      ergoWallet.get_balance(TOKENID_TERAHERTZ).then(function (balance) {
+        setTerahertzBalance(balance); 
+      }); 
       // get Ergopad balance
       ergoWallet.get_balance(TOKENID_ERGOPAD).then(function (balance) {
         setErgopadBalance(balance / 100);
