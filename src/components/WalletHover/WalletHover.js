@@ -100,6 +100,23 @@ export default function WalletHover({
                 )}
               </Menu.Item>
             )}
+{terahertzBalance != 0 && (
+  <Menu.Item>
+    {({ active }) => (
+      <a
+        href="#"
+        className={classNames(active ? "item1" : "item2", "item3")}
+      >
+        <img src="https://thz.fm/assets/thzfm/nexus/assets/Terahertz-093c6f7e.png" className="token-icon-img" />  {/* Use the appropriate icon for Terahertz */}
+        <p>
+          Terahertz Balance:
+          <br />
+          {terahertzBalance} THZ  {/* Use the appropriate symbol for Terahertz */}
+        </p>
+      </a>
+    )}
+  </Menu.Item>
+)}
             {ergopadBalance != 0 && (
               <Menu.Item>
                 {({ active }) => (
