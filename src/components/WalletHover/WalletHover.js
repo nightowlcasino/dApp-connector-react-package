@@ -108,11 +108,11 @@ export default function WalletHover({
         href="#"
         className={classNames(active ? "item1" : "item2", "item3")}
       >
-        <img src="https://thz.fm/assets/thzfm/nexus/assets/Terahertz-093c6f7e.png" className="token-icon-img" />  {/* Use the appropriate icon for Terahertz */}
+        <img src="https://thz.fm/assets/thzfm/nexus/assets/Terahertz-093c6f7e.png" className="token-icon-img" /> 
         <p>
           Terahertz Balance:
           <br />
-          {terahertzBalance} THZ  {/* Use the appropriate symbol for Terahertz */}
+          {terahertzBalance} THz
         </p>
       </a>
     )}
