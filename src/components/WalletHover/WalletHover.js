@@ -18,6 +18,7 @@ export default function WalletHover({
   disconnect,
   sigUSDBalance,
   ergBalance,
+  terahertzBalance,
   sigRSVBalance,
   ergopadBalance,
   netaBalance,
